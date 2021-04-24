@@ -17,8 +17,12 @@ mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
-})
+});
+
+const materielsRouter=require('./routes/materiels');
+
+app.use('/materiels',materielsRouter);
 
 app.listen(port, () => {
     console.log(`Server is runniing on port: ${port}`);
-})
+});

@@ -9,9 +9,8 @@ const materielSchema=new Schema({
     stockdispo:{type:Number,required:true},
     derniereutilisation:{type:Date,required:true},
     prochaineutilisation:{type:Date,required:false},
-    status:{type:Boolean,required:true},
-    prix:{type:Number,required:true},
-    etat:{type:Boolean,required:true}
+    etat:{type:Boolean,required:true},
+    prix:{type:Number,required:true}
 },{
     timestamps:true,
 });
