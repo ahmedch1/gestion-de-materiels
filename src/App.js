@@ -10,11 +10,13 @@ import CreateMateriel from "./components/create-materiel.component";
 function App() {
     return (
         <Router>
-          <Navbar />
-          <br/>
-          <Route path="/" exact component={MaterielsList}/>
-          <Route path="/edit/:id" component={EditMateriel}/>
-          <Route path="/create" component={CreateMateriel}/>
+            <div className="container">
+                <Navbar/>
+                <br/>
+                <Route path="/" exact component={MaterielsList}/>
+                <Route path="/edit/:id" component={EditMateriel}/>
+                <Route path="/create" component={CreateMateriel}/>
+            </div>
         </Router>
     );
 }
