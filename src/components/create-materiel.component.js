@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
+import axios from 'axios';
 
 export default class CreateMateriel extends Component {
     constructor(props) {
@@ -92,6 +93,9 @@ export default class CreateMateriel extends Component {
         }
 
         console.log(materiel);
+        axios.post('http://localhost:5000/materiels/add',materiel)
+            .then(res=>console.log(res.data));
+
         window.location = '/';
     }
 
