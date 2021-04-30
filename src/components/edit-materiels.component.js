@@ -15,6 +15,7 @@ export default class EditMateriels extends Component {
         this.onChangeProchaineutilisation = this.onChangeProchaineutilisation.bind(this);
         this.onChangePrix = this.onChangePrix.bind(this);
         this.onChangeEtat = this.onChangeEtat.bind(this);
+        this.onChangeStatut = this.onChangeStatut.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -25,22 +26,24 @@ export default class EditMateriels extends Component {
             derniereutilisation: new Date(),
             prochaineutilisation: new Date(),
             prix: 0,
-            etat: false
+            etat: false,
+            statut: false
         }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/materiels/'+this.props.match.params.id)
-            .then(response=>{
+        axios.get('http://localhost:5000/materiels/' + this.props.match.params.id)
+            .then(response => {
                 this.setState({
-                    nom:response.data.nom,
-                    famille:response.data.famille,
-                    reference:response.data.reference,
-                    stockdispo:response.data.stockdispo,
-                    derniereutilisation:new Date(response.data.derniereutilisation),
-                    prochaineutilisation:new Date(response.data.prochaineutilisation),
-                    prix:response.data.prix,
-                    etat:response.data.etat
+                    nom: response.data.nom,
+                    famille: response.data.famille,
+                    reference: response.data.reference,
+                    stockdispo: response.data.stockdispo,
+                    derniereutilisation: new Date(response.data.derniereutilisation),
+                    prochaineutilisation: new Date(response.data.prochaineutilisation),
+                    prix: response.data.prix,
+                    etat: response.data.etat,
+                    statut: response.data.statut
                 })
             })
     }
@@ -94,6 +97,12 @@ export default class EditMateriels extends Component {
         });
     }
 
+    onChangeStatut(e) {
+        this.setState({
+            statut: e.target.checked
+        });
+    }
+
     onSubmit(e) {
         e.preventDefault();
         const materiel = {
@@ -104,12 +113,13 @@ export default class EditMateriels extends Component {
             derniereutilisation: this.state.derniereutilisation,
             prochaineutilisation: this.state.prochaineutilisation,
             prix: this.state.prix,
-            etat: this.state.etat
+            etat: this.state.etat,
+            statut: this.state.statut
         }
 
         console.log(materiel);
-        axios.post('http://localhost:5000/materiels/update/'+this.props.match.params.id,materiel)
-            .then(res=>console.log(res.data));
+        axios.post('http://localhost:5000/materiels/update/' + this.props.match.params.id, materiel)
+            .then(res => console.log(res.data));
 
         window.location = '/';
     }
@@ -143,14 +153,16 @@ export default class EditMateriels extends Component {
                     <div className="form-group">
                         <div>
                             <label>DerniereUtilisation:</label>
-                            <DatePicker selected={this.state.derniereutilisation} onChange={this.onChangeDerniereutilisation}/>
+                            <DatePicker selected={this.state.derniereutilisation}
+                                        onChange={this.onChangeDerniereutilisation}/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div>
                             <label>ProchaineUtilisation:</label>
-                            <DatePicker selected={this.state.prochaineutilisation} onChange={this.onChangeProchaineutilisation}/>
+                            <DatePicker selected={this.state.prochaineutilisation}
+                                        onChange={this.onChangeProchaineutilisation}/>
                         </div>
                     </div>
                     <div className="form-group">
@@ -162,6 +174,11 @@ export default class EditMateriels extends Component {
                         <label>Etat:</label>
                         <input type="checkbox" className="form-control" value={this.state.etat}
                                onChange={this.onChangeEtat}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Statut:</label>
+                        <input type="checkbox" className="form-control" value={this.state.statut}
+                               onChange={this.onChangeStatut}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Edit Materiel" className="btn btn-primary"/>

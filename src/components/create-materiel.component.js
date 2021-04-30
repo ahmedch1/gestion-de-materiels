@@ -15,6 +15,7 @@ export default class CreateMateriel extends Component {
         this.onChangeProchaineutilisation = this.onChangeProchaineutilisation.bind(this);
         this.onChangePrix = this.onChangePrix.bind(this);
         this.onChangeEtat = this.onChangeEtat.bind(this);
+        this.onChangeStatut = this.onChangeStatut.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -25,7 +26,8 @@ export default class CreateMateriel extends Component {
             derniereutilisation: new Date(),
             prochaineutilisation: new Date(),
             prix: 0,
-            etat: false
+            etat: false,
+            statut:false
         }
     }
 
@@ -78,6 +80,11 @@ export default class CreateMateriel extends Component {
             etat: e.target.checked
         });
     }
+    onChangeStatut(e) {
+        this.setState({
+            statut: e.target.checked
+        });
+    }
 
     onSubmit(e) {
         e.preventDefault();
@@ -89,7 +96,8 @@ export default class CreateMateriel extends Component {
             derniereutilisation: this.state.derniereutilisation,
             prochaineutilisation: this.state.prochaineutilisation,
             prix: this.state.prix,
-            etat: this.state.etat
+            etat: this.state.etat,
+            statut:this.state.statut
         }
 
         console.log(materiel);
@@ -147,6 +155,11 @@ export default class CreateMateriel extends Component {
                         <label>Etat:</label>
                         <input type="checkbox" className="form-control" value={this.state.etat}
                                onChange={this.onChangeEtat}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Statut:</label>
+                        <input type="checkbox" className="form-control" value={this.state.statut}
+                               onChange={this.onChangeStatut}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Create Materiel" className="btn btn-primary"/>

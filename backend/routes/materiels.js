@@ -15,9 +15,10 @@ router.route('/add').post((req, res) => {
     const derniereutilisation = Date.parse(req.body.derniereutilisation);
     const prochaineutilisation = Date.parse(req.body.prochaineutilisation);
     const etat = Boolean(req.body.etat);
+    const statut = Boolean(req.body.statut);
     const prix = Number(req.body.prix);
     const newMateriel = new Materiel({
-        nom, famille, reference, stockdispo, derniereutilisation, prochaineutilisation, prix, etat
+        nom, famille, reference, stockdispo, derniereutilisation, prochaineutilisation, prix, etat,statut
     });
 
     newMateriel.save()
@@ -47,6 +48,7 @@ router.route('/update/:id').post((req, res) => {
             materiel.derniereutilisation = Date.parse(req.body.derniereutilisation);
             materiel.prochaineutilisation = Date.parse(req.body.prochaineutilisation);
             materiel.etat = Boolean(req.body.etat);
+            materiel.statut=Boolean(req.body.statut)
             materiel.prix = Number(req.body.prix);
 
             materiel.save().then(() => res.json('Materiel updated!'))

@@ -13,6 +13,7 @@ const Materiel=props=>(
         <td>{props.materiel.prochaineutilisation.substring(0,10)}</td>
         <td>{props.materiel.prix}</td>
         <td>{props.materiel.etat.toString()}</td>
+        <td>{props.materiel.statut.toString()}</td>
         <td>
             <Link to={"/edit/"+props.materiel._id}>edit</Link> | <a href="#" onClick={()=>{props.deleteMateriel(props.materiel._id)}}>delete</a>
         </td>
@@ -69,6 +70,7 @@ export default class MaterielsList extends Component {
                             <th>Prochaine Utilisation</th>
                             <th>Prix</th>
                             <th>Etat</th>
+                            <th>Statut</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

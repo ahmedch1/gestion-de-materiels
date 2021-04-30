@@ -6,3 +6,9 @@ and npm start
 got to folder backend
 and nodemon server.js
 
+
+
+#Ce qui manque
+
+Recherche materiel / statistiques / notifications
+

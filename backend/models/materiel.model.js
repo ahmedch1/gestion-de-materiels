@@ -10,6 +10,7 @@ const materielSchema=new Schema({
     derniereutilisation:{type:Date,required:true},
     prochaineutilisation:{type:Date,required:false},
     etat:{type:Boolean,required:true},
+    statut:{type:Boolean,required:true},
     prix:{type:Number,required:true}
 },{
     timestamps:true,
