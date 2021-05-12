@@ -16,6 +16,11 @@ export default class CreateMateriel extends Component {
         this.onChangePrix = this.onChangePrix.bind(this);
         this.onChangeEtat = this.onChangeEtat.bind(this);
         this.onChangeStatut = this.onChangeStatut.bind(this);
+        this.onChangeFournisseur=this.onChangeFournisseur.bind(this);
+        this.onChangeDateentree=this.onChangeDateentree.bind(this);
+        this.onChangeEmprunteepar=this.onChangeEmprunteepar.bind(this);
+        this.onChangeCodebarre=this.onChangeCodebarre.bind(this);
+
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -27,7 +32,12 @@ export default class CreateMateriel extends Component {
             prochaineutilisation: new Date(),
             prix: 0,
             etat: false,
-            statut:false
+            statut:false,
+            fournisseur:'',
+            dateentree: new Date(),
+            emprunteepar:'',
+            codebarre:''
+
         }
     }
 
@@ -85,6 +95,29 @@ export default class CreateMateriel extends Component {
             statut: e.target.checked
         });
     }
+    onChangeFournisseur(e){
+        this.setState({
+            fournisseur: e.target.value
+        });
+    }
+
+    onChangeDateentree(dateentree){
+        this.setState({
+            dateentree: dateentree
+        });
+    }
+
+    onChangeEmprunteepar(e){
+        this.setState({
+            emprunteepar: e.target.value
+        });
+    }
+    onChangeCodebarre(e){
+        this.setState({
+            codebarre:e.target.value
+        })
+    }
+
 
     onSubmit(e) {
         e.preventDefault();
@@ -97,7 +130,11 @@ export default class CreateMateriel extends Component {
             prochaineutilisation: this.state.prochaineutilisation,
             prix: this.state.prix,
             etat: this.state.etat,
-            statut:this.state.statut
+            statut:this.state.statut,
+            fournisseur:this.state.fournisseur,
+            dateentree:this.state.dateentree,
+            emprunteepar:this.state.emprunteepar,
+            codebarre: this.state.codebarre
         }
 
         console.log(materiel);
@@ -146,11 +183,43 @@ export default class CreateMateriel extends Component {
                         <DatePicker selected={this.state.prochaineutilisation} onChange={this.onChangeProchaineutilisation}/>
                         </div>
                     </div>
+
+                    <div className="form-group">
+                        <div>
+                            <label>Date Entree :</label>
+                            <DatePicker selected={this.state.dateentree} onChange={this.onChangeDateentree}/>
+                        </div>
+                    </div>
+
                     <div className="form-group">
                         <label>Prix:</label>
                         <input type="text" required className="form-control" value={this.state.prix}
                                onChange={this.onChangePrix}/>
                     </div>
+                    {/*fournisseur*/}
+                    {/*dateentree*/}
+                    {/*emprunteepar*/}
+                    {/*codebarre*/}
+                    <div className="form-group">
+                        <label>Fournisseur :</label>
+                        <input type="text" required className="form-control" value={this.state.fournisseur}
+                               onChange={this.onChangeFournisseur}/>
+                    </div>
+
+
+
+                    <div className="form-group">
+                        <label>Empruntée par :</label>
+                        <input type="text" required className="form-control" value={this.state.emprunteepar}
+                               onChange={this.onChangeEmprunteepar}/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Code à Barre :</label>
+                        <input type="text" required className="form-control" value={this.state.codebarre}
+                               onChange={this.onChangeCodebarre}/>
+                    </div>
+
                     <div className="form-group">
                         <label>Etat:</label>
                         <input type="checkbox" className="form-control" value={this.state.etat}

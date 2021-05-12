@@ -3,6 +3,12 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import axios from 'axios';
 
+
+{/*fournisseur*/}
+{/*dateentree*/}
+{/*emprunteepar*/}
+{/*codebarre*/}
+
 export default class EditMateriels extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +22,12 @@ export default class EditMateriels extends Component {
         this.onChangePrix = this.onChangePrix.bind(this);
         this.onChangeEtat = this.onChangeEtat.bind(this);
         this.onChangeStatut = this.onChangeStatut.bind(this);
+        this.onChangeFournisseur = this.onChangeFournisseur.bind(this);
+        this.onChangeDateentree = this.onChangeDateentree.bind(this);
+        this.onChangeEmprunteepar = this.onChangeEmprunteepar.bind(this);
+        this.onChangeCodeBarre = this.onChangeCodeBarre.bind(this);
+
+
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -27,7 +39,11 @@ export default class EditMateriels extends Component {
             prochaineutilisation: new Date(),
             prix: 0,
             etat: false,
-            statut: false
+            statut: false,
+            fournisseur:'',
+            dateentree:new Date(),
+            empruntee:'',
+            codebarre:''
         }
     }
 
@@ -43,7 +59,11 @@ export default class EditMateriels extends Component {
                     prochaineutilisation: new Date(response.data.prochaineutilisation),
                     prix: response.data.prix,
                     etat: response.data.etat,
-                    statut: response.data.statut
+                    statut: response.data.statut,
+                    fournisseur:response.data.fournisseur,
+                    dateentree:new Date(response.data.dateentree),
+                    empruntee:response.data.empruntee,
+                    codebarre:response.data.codebarre
                 })
             })
     }
@@ -102,6 +122,34 @@ export default class EditMateriels extends Component {
             statut: e.target.checked
         });
     }
+
+/*fournisseur*/ string
+/*dateentree*/ date
+/*emprunteepar*/ string
+/*codebarre*/ string
+
+    onChangeFournisseur(e) {
+        this.setState({
+            fournisseur: e.target.value
+        });
+    }
+
+
+    onChangeEmprunteepar(e) {
+        this.setState({
+            emprunteepar: e.target.value
+        });
+    }
+
+
+    onChangeCodeBarre(e) {
+        this.setState({
+            codebarre: e.target.value
+        });
+    }
+
+
+
 
     onSubmit(e) {
         e.preventDefault();

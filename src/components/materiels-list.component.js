@@ -3,8 +3,13 @@ import {Link} from 'react-router-dom'
 import axios from 'axios';
 
 
+
+
+
+
 const Materiel=props=>(
     <tr>
+
         <td>{props.materiel.nom}</td>
         <td>{props.materiel.famille}</td>
         <td>{props.materiel.reference}</td>
@@ -51,9 +56,15 @@ export default class MaterielsList extends Component {
 
 
     materielList(){
+
+
         return this.state.materiels.map(currentmateriel=>{
-            return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel} key={currentmateriel._id}/>;
+            if(currentmateriel.etat===true) {
+                return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
+                                 key={currentmateriel._id}/>;
+            }
         })
+
     }
     render() {
         return (
