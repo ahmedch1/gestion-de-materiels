@@ -59,10 +59,8 @@ export default class MaterielsList extends Component {
 
 
         return this.state.materiels.map(currentmateriel=>{
-            if(currentmateriel.etat===true) {
                 return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
                                  key={currentmateriel._id}/>;
-            }
         })
 
     }
