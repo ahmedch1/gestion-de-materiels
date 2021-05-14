@@ -17,12 +17,28 @@ router.route('/add').post((req, res) => {
     const etat = Boolean(req.body.etat);
     const statut = Boolean(req.body.statut);
     const prix = Number(req.body.prix);
-    const fournisseur=req.body.fournisseur;
-    const dateentree=Date.parse(req.body.dateentree);
-    const emprunteepar=req.body.emprunteepar;
-    const codebarre=req.body.codebarre;
+    const fournisseur = req.body.fournisseur;
+    const dateentree = Date.parse(req.body.dateentree);
+    const emprunteepar = req.body.emprunteepar;
+    const codebarre = req.body.codebarre;
+    const emprunt = Boolean(req.body.emprunt)
+    const recent=Boolean(req.body.recent)
     const newMateriel = new Materiel({
-        nom, famille, reference, stockdispo, derniereutilisation, prochaineutilisation, prix, etat,statut,fournisseur,dateentree,emprunteepar,codebarre
+        nom,
+        famille,
+        reference,
+        stockdispo,
+        derniereutilisation,
+        prochaineutilisation,
+        prix,
+        etat,
+        statut,
+        fournisseur,
+        dateentree,
+        emprunteepar,
+        codebarre,
+        emprunt,
+        recent
     });
 
     newMateriel.save()
@@ -52,13 +68,13 @@ router.route('/update/:id').post((req, res) => {
             materiel.derniereutilisation = Date.parse(req.body.derniereutilisation);
             materiel.prochaineutilisation = Date.parse(req.body.prochaineutilisation);
             materiel.etat = Boolean(req.body.etat);
-            materiel.statut=Boolean(req.body.statut)
+            materiel.statut = Boolean(req.body.statut)
             materiel.prix = Number(req.body.prix);
-            materiel.fournisseur=req.body.fournisseur;
-            materiel.dateentree=Date.parse(req.body.dateentree);
-            materiel.emprunteepar=req.body.emprunteepar;
-            materiel.codebarre=req.body.codebarre;
-
+            materiel.fournisseur = req.body.fournisseur;
+            materiel.dateentree = Date.parse(req.body.dateentree);
+            materiel.emprunteepar = req.body.emprunteepar;
+            materiel.codebarre = req.body.codebarre;
+            materiel.emprunt = Boolean(req.body.emprunt);
             materiel.save().then(() => res.json('Materiel updated!'))
                 .catch(err => res.status(400).json('Error:' + err));
         })
