@@ -18,7 +18,7 @@ function App() {
                 <Route path="/" exact component={MaterielsList}/>
                 <Route path="/edit/:id" component={EditMateriel}/>
                 <Route path="/create" component={CreateMateriel}/>
-                <Route path="/entree" component={MaterielsEntree}/>
+                <Route path="/recent" component={MaterielsEntree}/>
                 <Route path="/empruntee" component={MaterielsEmprunte}/>
             </div>
         </Router>

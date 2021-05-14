@@ -53,7 +53,11 @@ export default class MaterielsList extends Component {
 
     materielList(){
         return this.state.materiels.map(currentmateriel=>{
-            return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel} key={currentmateriel._id}/>;
+            if(currentmateriel.recent===true) {
+                return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
+                                 key={currentmateriel._id}/>;
+            }
+
         })
     }
     render() {
@@ -85,3 +89,7 @@ export default class MaterielsList extends Component {
     }
 
 }
+
+
+//TODO Optimisation
+//Return Recent Materiel when it is between a specific date
