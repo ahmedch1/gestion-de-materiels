@@ -17,6 +17,7 @@ const materielSchema = new Schema({
     emprunteepar: {type: String, required: false},
     codebarre: {type: String, required: false},
     emprunt:{type:Boolean,required:false},
+    recent:{type:Boolean,required:false}
 }, {
     timestamps: true,
 });

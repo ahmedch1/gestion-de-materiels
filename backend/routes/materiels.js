@@ -75,6 +75,7 @@ router.route('/update/:id').post((req, res) => {
             materiel.emprunteepar = req.body.emprunteepar;
             materiel.codebarre = req.body.codebarre;
             materiel.emprunt = Boolean(req.body.emprunt);
+            materiel.recent=Boolean(req.body.emprunt);
             materiel.save().then(() => res.json('Materiel updated!'))
                 .catch(err => res.status(400).json('Error:' + err));
         })
