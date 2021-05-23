@@ -7,9 +7,11 @@ import MaterielsList from "./components/materiels-list.component";
 import EditMateriel from "./components/edit-materiels.component";
 import CreateMateriel from "./components/create-materiel.component";
 import MaterielsSearch from "./components/search-materiel.component";
+import MaterielsSearch2 from "./components/search2-materiel.component";
+import MaterielsSearch3 from "./components/search3-materiel.component";
 import MaterielsEntree from "./components/materiels-list-entree.component";
 import MaterielsEmprunte from "./components/materiels-list-empruntee.component";
-
+import MaterielsStats from "./components/materiels-stats-component"
 
 
 function App() {
@@ -24,6 +26,9 @@ function App() {
                 <Route path="/recent" component={MaterielsEntree}/>
                 <Route path="/empruntee" component={MaterielsEmprunte}/>
                 <Route path="/search" component={MaterielsSearch}/>
+                <Route path="/search2" component={MaterielsSearch2}/>
+                <Route path="/search3" component={MaterielsSearch3}/>
+                <Route path="/statistiques" component={MaterielsStats}/>
             </div>
         </Router>
     );
