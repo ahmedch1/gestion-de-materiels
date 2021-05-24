@@ -12,7 +12,7 @@ import MaterielsSearch3 from "./components/search3-materiel.component";
 import MaterielsEntree from "./components/materiels-list-entree.component";
 import MaterielsEmprunte from "./components/materiels-list-empruntee.component";
 import MaterielsStats from "./components/materiels-stats-component"
-
+import MaterielLogin from "./components/Login-materiel-component"
 
 function App() {
     return (
@@ -20,7 +20,8 @@ function App() {
             <div className="container">
                 <Navbar/>
                 <br/>
-                <Route path="/" exact component={MaterielsList}/>
+                <Route path="/" exact component={MaterielLogin}/>
+                <Route path="/materiels" component={MaterielsList}/>
                 <Route path="/edit/:id" component={EditMateriel}/>
                 <Route path="/create" component={CreateMateriel}/>
                 <Route path="/recent" component={MaterielsEntree}/>
