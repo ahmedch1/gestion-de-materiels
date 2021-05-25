@@ -141,7 +141,7 @@ export default class CreateMateriel extends Component {
         axios.post('http://localhost:5000/materiels/add',materiel)
             .then(res=>console.log(res.data));
 
-        window.location = '/';
+        window.location = '/materiels';
     }
 
     render() {
