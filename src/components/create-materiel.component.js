@@ -20,6 +20,8 @@ export default class CreateMateriel extends Component {
         this.onChangeDateentree=this.onChangeDateentree.bind(this);
         this.onChangeEmprunteepar=this.onChangeEmprunteepar.bind(this);
         this.onChangeCodebarre=this.onChangeCodebarre.bind(this);
+        this.onChangeEmprunt=this.onChangeEmprunt.bind(this);
+        this.onChangeRecent=this.onChangeRecent.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -36,7 +38,9 @@ export default class CreateMateriel extends Component {
             fournisseur:'',
             dateentree: new Date(),
             emprunteepar:'',
-            codebarre:''
+            codebarre:'',
+            emprunt:false,
+            recent:false
 
         }
     }
@@ -115,6 +119,17 @@ export default class CreateMateriel extends Component {
     onChangeCodebarre(e){
         this.setState({
             codebarre:e.target.value
+        })
+    }
+    onChangeEmprunt(e){
+        this.setState({
+            emprunt: e.target.checked
+        })
+    }
+
+    onChangeRecent(e){
+        this.setState({
+            recent: e.target.checked
         })
     }
 

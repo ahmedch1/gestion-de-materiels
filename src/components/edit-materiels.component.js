@@ -4,10 +4,6 @@ import "react-datepicker/dist/react-datepicker.css"
 import axios from 'axios';
 
 
-{/*fournisseur*/}
-{/*dateentree*/}
-{/*emprunteepar*/}
-{/*codebarre*/}
 
 export default class EditMateriels extends Component {
     constructor(props) {
@@ -26,6 +22,8 @@ export default class EditMateriels extends Component {
         this.onChangeDateentree = this.onChangeDateentree.bind(this);
         this.onChangeEmprunteepar = this.onChangeEmprunteepar.bind(this);
         this.onChangeCodeBarre = this.onChangeCodeBarre.bind(this);
+        this.onChangeEmprunt=this.onChangeEmprunt.bind(this);
+        this.onChangeRecent=this.onChangeRecent.bind(this);
 
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -43,7 +41,9 @@ export default class EditMateriels extends Component {
             fournisseur:'',
             dateentree:new Date(),
             empruntee:'',
-            codebarre:''
+            codebarre:'',
+            emprunt:false,
+            recent:false
         }
     }
 
@@ -63,7 +63,9 @@ export default class EditMateriels extends Component {
                     fournisseur:response.data.fournisseur,
                     dateentree:new Date(response.data.dateentree),
                     empruntee:response.data.empruntee,
-                    codebarre:response.data.codebarre
+                    codebarre:response.data.codebarre,
+                    emprunt:response.data.emprunt,
+                    recent:response.data.recent
                 })
             })
     }
@@ -99,11 +101,19 @@ export default class EditMateriels extends Component {
         });
     }
 
+    onChangeDateentree(dateentree){
+        this.setState({
+            dateentree:dateentree
+        })
+    }
+
     onChangeProchaineutilisation(prochaineutilisation) {
         this.setState({
             prochaineutilisation: prochaineutilisation
         });
     }
+
+
 
     onChangePrix(e) {
         this.setState({
@@ -122,11 +132,6 @@ export default class EditMateriels extends Component {
             statut: e.target.checked
         });
     }
-
-/*fournisseur*/ string
-/*dateentree*/ date
-/*emprunteepar*/ string
-/*codebarre*/ string
 
     onChangeFournisseur(e) {
         this.setState({
@@ -148,6 +153,18 @@ export default class EditMateriels extends Component {
         });
     }
 
+    onChangeEmprunt(e){
+    this.setState({
+        emprunt: e.target.checked
+    })
+    }
+
+    onChangeRecent(e){
+    this.setState({
+        recent: e.target.checked
+    })
+    }
+
 
 
 
@@ -162,14 +179,18 @@ export default class EditMateriels extends Component {
             prochaineutilisation: this.state.prochaineutilisation,
             prix: this.state.prix,
             etat: this.state.etat,
-            statut: this.state.statut
+            statut: this.state.statut,
+            fournisseur:this.state.fournisseur,
+            dateentree:this.state.dateentree,
+            emprunt: this.state.emprunt,
+            recent:this.state.recent
         }
 
         console.log(materiel);
         axios.post('http://localhost:5000/materiels/update/' + this.props.match.params.id, materiel)
             .then(res => console.log(res.data));
 
-        window.location = '/';
+        window.location = '/materiels';
     }
 
     render() {
@@ -227,6 +248,16 @@ export default class EditMateriels extends Component {
                         <label>Statut:</label>
                         <input type="checkbox" className="form-control" value={this.state.statut}
                                onChange={this.onChangeStatut}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Emprunt ?</label>
+                        <input type="checkbox" className="form-control" value={this.state.emprunt}
+                               onChange={this.onChangeEmprunt}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Recent ?</label>
+                        <input type="checkbox" className="form-control" value={this.state.recent}
+                               onChange={this.onChangeRecent}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Edit Materiel" className="btn btn-primary"/>
