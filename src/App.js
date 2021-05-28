@@ -13,7 +13,7 @@ import MaterielsEntree from "./components/materiels-list-entree.component";
 import MaterielsEmprunte from "./components/materiels-list-empruntee.component";
 import MaterielsStats from "./components/materiels-stats-component"
 import MaterielLogin from "./components/Login-materiel-component"
-
+import ReserverMateriel from './components/reserver-materiel.component';
 function App() {
     return (
         <Router>
@@ -26,6 +26,7 @@ function App() {
                 <Route path="/create" component={CreateMateriel}/>
                 <Route path="/recent" component={MaterielsEntree}/>
                 <Route path="/empruntee" component={MaterielsEmprunte}/>
+                <Route path="/reserver" component={ReserverMateriel}/>
                 <Route path="/search" component={MaterielsSearch}/>
                 <Route path="/search2" component={MaterielsSearch2}/>
                 <Route path="/search3" component={MaterielsSearch3}/>

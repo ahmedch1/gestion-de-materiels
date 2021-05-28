@@ -1,3 +1,79 @@
+/* Design of form*/
+
+.container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  width:100%;
+}
+.form-box{
+  width:380px;
+  height:450px;
+  background-color:black;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  opacity:0.5;
+  border-radius:2%;
+}
+.header-form{
+  margin-bottom:15px;
+}
+button{
+  margin-top:40px;
+  margin-bottom:10px;
+}
+.message{
+  display:flex;
+  justify-content:space-between
+}
+.social{
+  display:flex;
+  justify-content:space-around;
+  padding:30px;
+}
+
+.social i{
+  font-size:35px;
+}
+
+.social i:hover{
+  color:red;
+  cursor:pointer;
+}
+
+/* Design of Form*/
+
+/* Design related to the button */
+input.btn.btn-block{
+  color: #fff;
+  background-color: #5457ff;
+  font-size: 1em;
+  font-weight: 700;
+  padding: 13px 60px;
+  text-align: center;
+  border: none;
+  position: relative;
+  display: inline-block;
+  -webkit-box-shadow: 0 2px 4px 0 rgb(100 105 124 / 24%);
+  -moz-box-shadow: 0 2px 4px 0 rgba(100, 105, 124, 0.24);
+  box-shadow: 0 2px 4px 0 rgb(100 105 124 / 24%);
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  line-height: 23px;
+  line-height: 1.6428571429rem;
+}
+
+/* Design related to the button */
+
 .App {
   text-align: center;
 }
@@ -35,4 +111,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+button.btn {
+  color: #fff;
+  background-color: #5457ff;
+  font-size: 1em;
+  font-weight: 700;
+  padding: 13px 60px;
+  text-align: center;
+  border: none;
+  position: relative;
+  display: inline-block;
+  -webkit-box-shadow: 0 2px 4px 0 rgb(100 105 124 / 24%);
+  -moz-box-shadow: 0 2px 4px 0 rgba(100, 105, 124, 0.24);
+  box-shadow: 0 2px 4px 0 rgb(100 105 124 / 24%);
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  border-radius: 3px !important;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  line-height: 23px;
+  line-height: 1.6428571429rem;
+}
+.btn-block {
+  display: block;
+  width: 100%;
 }
