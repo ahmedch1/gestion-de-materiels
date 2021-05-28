@@ -246,6 +246,11 @@ export default class CreateMateriel extends Component {
                                onChange={this.onChangeStatut}/>
                     </div>
                     <div className="form-group">
+                        <label>Emprunte:</label>
+                        <input type="checkbox" className="form-control" value={this.state.emprunt}
+                               onChange={this.onChangeEmprunt}/>
+                    </div>
+                    <div className="form-group">
                         <input type="submit" value="Create Materiel" className="btn btn-primary"/>
                     </div>
                 </form>
