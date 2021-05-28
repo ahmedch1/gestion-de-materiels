@@ -154,15 +154,15 @@ export default class EditMateriels extends Component {
     }
 
     onChangeEmprunt(e){
-    this.setState({
-        emprunt: e.target.checked
-    })
+        this.setState({
+            emprunt: e.target.checked
+        })
     }
 
     onChangeRecent(e){
-    this.setState({
-        recent: e.target.checked
-    })
+        this.setState({
+            recent: e.target.checked
+        })
     }
 
 
@@ -196,7 +196,7 @@ export default class EditMateriels extends Component {
     render() {
         return (
             <div>
-                <h3>Edit Materiel</h3>
+                <h3>Modifier matériel</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Nom:</label>
@@ -209,19 +209,19 @@ export default class EditMateriels extends Component {
                                onChange={this.onChangeFamille}/>
                     </div>
                     <div className="form-group">
-                        <label>Reference:</label>
+                        <label>Référence:</label>
                         <input type="text" required className="form-control" value={this.state.reference}
                                onChange={this.onChangeReference}/>
                     </div>
                     <div className="form-group">
-                        <label>StockDispo:</label>
+                        <label>Stock Disponible:</label>
                         <input type="text" required className="form-control" value={this.state.stockdispo}
                                onChange={this.onChangeStockdispo}/>
                     </div>
 
                     <div className="form-group">
                         <div>
-                            <label>DerniereUtilisation:</label>
+                            <label>Derniere utilisation:</label>
                             <DatePicker selected={this.state.derniereutilisation}
                                         onChange={this.onChangeDerniereutilisation}/>
                         </div>
@@ -229,7 +229,7 @@ export default class EditMateriels extends Component {
 
                     <div className="form-group">
                         <div>
-                            <label>ProchaineUtilisation:</label>
+                            <label>Prochaine utilisation:</label>
                             <DatePicker selected={this.state.prochaineutilisation}
                                         onChange={this.onChangeProchaineutilisation}/>
                         </div>
@@ -250,12 +250,12 @@ export default class EditMateriels extends Component {
                                onChange={this.onChangeStatut}/>
                     </div>
                     <div className="form-group">
-                        <label>Emprunt ?</label>
+                        <label>Emprunté </label>
                         <input type="checkbox" className="form-control" value={this.state.emprunt}
                                onChange={this.onChangeEmprunt}/>
                     </div>
                     <div className="form-group">
-                        <label>Recent ?</label>
+                        <label>Récent </label>
                         <input type="checkbox" className="form-control" value={this.state.recent}
                                onChange={this.onChangeRecent}/>
                     </div>
