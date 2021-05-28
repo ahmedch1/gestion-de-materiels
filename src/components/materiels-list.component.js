@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 
+
 const Materiel=props=>(
     <tr>
 
@@ -14,11 +15,14 @@ const Materiel=props=>(
         <td>{props.materiel.famille}</td>
         <td>{props.materiel.reference}</td>
         <td>{props.materiel.stockdispo}</td>
+        <td>{props.materiel.emprunteepar}</td>
         <td>{props.materiel.derniereutilisation.substring(0,10)}</td>
         <td>{props.materiel.prochaineutilisation.substring(0,10)}</td>
         <td>{props.materiel.prix}</td>
         <td>{props.materiel.etat.toString()}</td>
         <td>{props.materiel.statut.toString()}</td>
+        <td>{props.materiel.fournisseur}</td>
+        <td>{props.materiel.codebarre}</td>
         <td>
             <Link to={"/edit/"+props.materiel._id}>edit</Link> | <a href="#" onClick={()=>{props.deleteMateriel(props.materiel._id)}}>delete</a>
         </td>
@@ -59,8 +63,8 @@ export default class MaterielsList extends Component {
 
 
         return this.state.materiels.map(currentmateriel=>{
-                return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
-                                 key={currentmateriel._id}/>;
+            return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
+                             key={currentmateriel._id}/>;
         })
 
     }
@@ -70,18 +74,22 @@ export default class MaterielsList extends Component {
                 <h3>Liste de Materiels</h3>
                 <table className="table">
                     <thead className="thead-light">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Famille</th>
-                            <th>Reference</th>
-                            <th>Quantité</th>
-                            <th>Derniere Utilisation</th>
-                            <th>Prochaine Utilisation</th>
-                            <th>Prix</th>
-                            <th>Etat</th>
-                            <th>Statut</th>
-                            <th>Actions</th>
-                        </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Famille</th>
+                        <th>Reference</th>
+                        <th>Quantité</th>
+                        <th>Emprunté actuellement par:</th>
+                        <th>Derniere Utilisation</th>
+                        <th>Prochaine Utilisation</th>
+                        <th>Prix</th>
+                        <th>Etat</th>
+                        <th>Statut</th>
+                        <th>Fournisseur</th>
+                        <th>Code à barre</th>
+
+                        <th>Actions</th>
+                    </tr>
                     </thead>
                     <tbody>
                     {this.materielList()}
@@ -92,3 +100,4 @@ export default class MaterielsList extends Component {
     }
 
 }
+

@@ -34,7 +34,6 @@ function LoginMateriels() {
     return (
 
         <div className="App">
-            <h1>Test</h1>
             {(user.email !== "") ? (<div className="welcome">
                     <MaterielsList/>
                     <button onClick={Logout}>Se déconnecter</button>
