@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import './style.css'
 function LoginForm({Login, error}) {
     const [details, setDetails] = useState({name: "", email: "", password: ""});
 
@@ -8,29 +8,42 @@ function LoginForm({Login, error}) {
         Login(details);
     }
     return (
-        <form onSubmit={submitHandler}>
-            <div className="form-inner">
-                <h2>Login</h2>
-                {(error != "") ? (<div className="error">{error}</div>) : ""}
-                {/*<div className="form-group">*/}
-                {/*    <label htmlFor="name">Name:</label>*/}
-                {/*    <input type="text" name="name" id="name"*/}
-                {/*           onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>*/}
-                {/*</div>*/}
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" name="email" id="email"
-                           onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
+        <div className="container-fluid row">
+            <div className="col-sm-6">
+                <div className="form-box">
+                    <form onSubmit={submitHandler}>
+                        <div className="form-inner">
+                            <h2>Login</h2>
+                            {(error != "") ? (<div className="error">{error}</div>) : ""}
+                            {/*<div className="form-group">*/}
+                            {/*    <label htmlFor="name">Name:</label>*/}
+                            {/*    <input type="text" name="name" id="name"*/}
+                            {/*           onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>*/}
+                            {/*</div>*/}
+                            <div className="form-group">
+                                <label htmlFor="email">Email:</label>
+                                <input className="form-control" placeholder="Email" type="email" name="email" id="email"
+                                       onChange={e => setDetails({...details, email: e.target.value})}
+                                       value={details.email}/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input className="form-control" placeholder="Password" type="password" name="password"
+                                       id="password"
+                                       onChange={e => setDetails({...details, password: e.target.value})}
+                                       value={details.password}/>
+                            </div>
+                            <input type="submit" value="Se Connecter" className="btn btn-block"/>
+
+                        </div>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password"
-                           onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
-                </div>
-                <input type="submit" value="Login"/>
+            </div>
+            <div className="col-sm-6 col right">
 
             </div>
-        </form>
+
+        </div>
     )
 }
 
