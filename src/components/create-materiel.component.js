@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import axios from 'axios';
 
+
 export default class CreateMateriel extends Component {
     constructor(props) {
         super(props);
@@ -70,6 +71,11 @@ export default class CreateMateriel extends Component {
             stockdispo: e.target.value
         });
     }
+    onChangeEmprunteepar(e){
+        this.setState({
+            emprunteepar: e.target.value
+        });
+    }
 
     onChangeDerniereutilisation(derniereutilisation) {
         this.setState({
@@ -104,23 +110,19 @@ export default class CreateMateriel extends Component {
             fournisseur: e.target.value
         });
     }
-
+    onChangeCodebarre(e){
+        this.setState({
+            codebarre:e.target.value
+        })
+    }
     onChangeDateentree(dateentree){
         this.setState({
             dateentree: dateentree
         });
     }
 
-    onChangeEmprunteepar(e){
-        this.setState({
-            emprunteepar: e.target.value
-        });
-    }
-    onChangeCodebarre(e){
-        this.setState({
-            codebarre:e.target.value
-        })
-    }
+
+
     onChangeEmprunt(e){
         this.setState({
             emprunt: e.target.checked
@@ -141,15 +143,17 @@ export default class CreateMateriel extends Component {
             famille: this.state.famille,
             reference: this.state.reference,
             stockdispo: this.state.stockdispo,
+            emprunteepar:this.state.emprunteepar,
             derniereutilisation: this.state.derniereutilisation,
             prochaineutilisation: this.state.prochaineutilisation,
             prix: this.state.prix,
             etat: this.state.etat,
             statut:this.state.statut,
             fournisseur:this.state.fournisseur,
+            codebarre: this.state.codebarre,
             dateentree:this.state.dateentree,
-            emprunteepar:this.state.emprunteepar,
-            codebarre: this.state.codebarre
+
+
         }
 
         console.log(materiel);
@@ -184,37 +188,42 @@ export default class CreateMateriel extends Component {
                         <input type="text" required className="form-control" value={this.state.stockdispo}
                                onChange={this.onChangeStockdispo}/>
                     </div>
-
+                    <div className="form-group">
+                        <label>Empruntée par :</label>
+                        <input type="text" required className="form-control" value={this.state.emprunteepar}
+                               onChange={this.onChangeEmprunteepar}/>
+                    </div>
                     <div className="form-group">
                         <div>
-                        <label>DerniereUtilisation:</label>
-                        <DatePicker selected={this.state.derniereutilisation} onChange={this.onChangeDerniereutilisation}/>
+                            <label>DerniereUtilisation:</label>
+                            <DatePicker selected={this.state.derniereutilisation} onChange={this.onChangeDerniereutilisation}/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div>
-                        <label>ProchaineUtilisation:</label>
-                        <DatePicker selected={this.state.prochaineutilisation} onChange={this.onChangeProchaineutilisation}/>
+                            <label>ProchaineUtilisation:</label>
+                            <DatePicker selected={this.state.prochaineutilisation} onChange={this.onChangeProchaineutilisation}/>
                         </div>
                     </div>
-
-                    <div className="form-group">
-                        <div>
-                            <label>Date Entree :</label>
-                            <DatePicker selected={this.state.dateentree} onChange={this.onChangeDateentree}/>
-                        </div>
-                    </div>
-
                     <div className="form-group">
                         <label>Prix:</label>
                         <input type="text" required className="form-control" value={this.state.prix}
                                onChange={this.onChangePrix}/>
                     </div>
-                    {/*fournisseur*/}
-                    {/*dateentree*/}
-                    {/*emprunteepar*/}
-                    {/*codebarre*/}
+                    <div className="form-group">
+                        <label>Etat:</label>
+                        <input type="checkbox" className="form-control" value={this.state.etat}
+                               onChange={this.onChangeEtat}/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Statut:</label>
+                        <input type="checkbox" className="form-control" value={this.state.statut}
+                               onChange={this.onChangeStatut}/>
+                    </div>
+
+
                     <div className="form-group">
                         <label>Fournisseur :</label>
                         <input type="text" required className="form-control" value={this.state.fournisseur}
@@ -224,32 +233,29 @@ export default class CreateMateriel extends Component {
 
 
                     <div className="form-group">
-                        <label>Empruntée par :</label>
-                        <input type="text" required className="form-control" value={this.state.emprunteepar}
-                               onChange={this.onChangeEmprunteepar}/>
-                    </div>
-
-                    <div className="form-group">
-                        <label>Code à Barre :</label>
-                        <input type="text" required className="form-control" value={this.state.codebarre}
+                        <label>code à barre</label>
+                        <input type="text" required className="form-control" value={this.state.Codebarre}
                                onChange={this.onChangeCodebarre}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Etat:</label>
-                        <input type="checkbox" className="form-control" value={this.state.etat}
-                               onChange={this.onChangeEtat}/>
+                        <div>
+                            <label>Date Entree :</label>
+                            <DatePicker selected={this.state.dateentree} onChange={this.onChangeDateentree}/>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Statut:</label>
-                        <input type="checkbox" className="form-control" value={this.state.statut}
-                               onChange={this.onChangeStatut}/>
-                    </div>
-                    <div className="form-group">
-                        <label>Emprunte:</label>
-                        <input type="checkbox" className="form-control" value={this.state.emprunt}
-                               onChange={this.onChangeEmprunt}/>
-                    </div>
+
+
+                    {/*fournisseur*/}
+                    {/*dateentree*/}
+                    {/*emprunteepar*/}
+                    {/*codebarre*/}
+
+
+
+
+
+
                     <div className="form-group">
                         <input type="submit" value="Create Materiel" className="btn btn-primary"/>
                     </div>
