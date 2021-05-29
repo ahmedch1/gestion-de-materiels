@@ -15,6 +15,7 @@ import MaterielsStats from "./components/materiels-stats-component"
 import MaterielLogin from "./components/Login-materiel-component"
 import ReserverMateriel from './components/reserver-materiel.component';
 import SignupMateriel from './components/signup-materiel-component';
+import MaterielsReserves from './components/reservation-list.component';
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/search" component={MaterielsSearch}/>
                 <Route path="/search2" component={MaterielsSearch2}/>
                 <Route path="/search3" component={MaterielsSearch3}/>
+                <Route path="/reservation" component={MaterielsReserves}/>
                 <Route path="/inscription" component={SignupMateriel}/>
                 <Route path="/statistiques" component={MaterielsStats}/>
             </div>

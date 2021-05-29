@@ -1,7 +1,7 @@
 import React, {useState, Component} from 'react';
 import LoginForm from "./LoginForm"
 import MaterielsList from "./materiels-list.component";
-
+import SignupForm from './SignupForm'
 function SignupMateriel() {
     const adminUser = {
         email: "rania@mail.com",
@@ -39,7 +39,7 @@ function SignupMateriel() {
                     <button className="btn btn-block" onClick={Logout}>Se déconnecter</button>
                 </div>
             ) : (
-                <LoginForm Login={Login} error={error}/>
+                <SignupForm Login={Login} error={error}/>
             )}
 
         </div>
