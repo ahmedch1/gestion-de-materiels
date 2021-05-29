@@ -2,22 +2,28 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {FaEdit} from "react-icons/fa";
+import {FaTrash} from "react-icons/fa";
 
-
-
-
-
-const Reserver=props=>(
+/* To add react icons I have installed npm install react-icons */
+const Materiel=props=>(
     <tr>
 
-        <td>{props.Reserver.nom}</td>
-        <td>{props.Reserver.reference}</td>
-        <td>{props.Reserver.quantite}</td>
-        <td>{props.Reserver.demandepar}</td>
-        <td>{props.Reserver.datedelemprunt.substring(0,10)}</td>
-        <td>{props.Reserver.datederetour.substring(0,10)}</td>
+        <td>{props.materiel.nom}</td>
+        <td>{props.materiel.famille}</td>
+        <td>{props.materiel.reference}</td>
+        <td>{props.materiel.stockdispo}</td>
+        <td>{props.materiel.emprunteepar}</td>
+        <td>{props.materiel.derniereutilisation.substring(0,10)}</td>
+        <td>{props.materiel.prochaineutilisation.substring(0,10)}</td>
+        <td>{props.materiel.prix}</td>
+        <td>{props.materiel.etat.toString()}</td>
+        <td>{props.materiel.statut.toString()}</td>
+        <td>{props.materiel.fournisseur}</td>
+        <td>{props.materiel.codebarre}</td>
         <td>
-            <Link to={"/edit/"+props.Reserver._id}>edit</Link> | <a href="#" onClick={()=>{props.deletereserver(props.Reserver._id)}}>delete</a>
+            <Link to={"/edit/"+props.materiel._id}><FaEdit /></Link> | <a href="#" onClick={()=>{props.deleteMateriel(props.materiel._id)}}><FaTrash /></a>
         </td>
     </tr>
 )
@@ -25,61 +31,67 @@ const Reserver=props=>(
 
 
 
-export default class ReservationList extends Component {
+export default class MaterielsList extends Component {
     constructor(props) {
         super(props);
-        this.deletereserver = this.deletereserver.bind(this);
-        this.state = {reservation: []};
+        this.deleteMateriel = this.deleteMateriel.bind(this);
+        this.state = {materiels: []};
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/reservation/')
+        axios.get('http://localhost:5000/materiels/')
             .then(response => {
-                this.setState({reservation: response.data})
+                this.setState({materiels: response.data})
             })
             .catch((error) => {
                 console.log(error);
             })
     }
 
-    deletereservation(id) {
-        axios.delete('http://localhost:5000/reservation/' + id)
+    deleteMateriel(id) {
+        axios.delete('http://localhost:5000/materiels/' + id)
             .then(res => console.log(res.data));
 
         this.setState({
-           reservation: this.state.reservation.filter(el => el._id !== id)
+            materiels: this.state.materiels.filter(el => el._id !== id)
         })
     }
 
 
-    reservationList(){
+    materielList(){
 
 
-        return this.state.reservation.map(currentreserver=>{
-                return <Reserver reserver={currentreserver} deletereserver={this.deletereserver}
-                                 key={currentreserver._id}/>;
+        return this.state.materiels.map(currentmateriel=>{
+            return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
+                             key={currentmateriel._id}/>;
         })
 
     }
     render() {
         return (
             <div>
-                <h3>Liste deS R2SERVATIONS</h3>
+                <h3>Liste de Materiels</h3>
                 <table className="table">
                     <thead className="thead-light">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Reference</th>
-                            <th>Demandé par</th>
-                            <th>Quantité</th>
-                            <th>Date de réservation</th>
-                            <th>Date de retour</th>
-                           <th>Actions</th>
-                            
-                        </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Famille</th>
+                        <th>Reference</th>
+                        <th>Quantité</th>
+                        <th>Emprunté actuellement par:</th>
+                        <th>Derniere Utilisation</th>
+                        <th>Prochaine Utilisation</th>
+                        <th>Prix</th>
+                        <th>Etat</th>
+                        <th>Statut</th>
+                        <th>Fournisseur</th>
+                        <th>Code à barre</th>
+
+                        <th>Actions</th>
+                    </tr>
                     </thead>
                     <tbody>
-                    {this.reservationList()}
+                    {this.materielList()}
                     </tbody>
                 </table>
             </div>
@@ -87,3 +99,4 @@ export default class ReservationList extends Component {
     }
 
 }
+
