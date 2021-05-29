@@ -140,7 +140,7 @@ export default class CreateMateriel extends Component {
     render() {
         return (
             <div>
-                <h3>Create New Materiel</h3>
+                <h3>Créer un Matériel</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Nom:</label>
@@ -224,7 +224,7 @@ export default class CreateMateriel extends Component {
                                onChange={this.onChangeStatut}/>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Create Materiel" className="btn btn-primary"/>
+                        <input type="submit" value="Créer Matériel" className="btn btn-primary"/>
                     </div>
                 </form>
             </div>

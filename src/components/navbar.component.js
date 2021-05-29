@@ -21,7 +21,7 @@ export default class Navbar extends Component {
                             <Link to="/empruntee" className="nav-link">Matériels empruntés</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/materiels" className="nav-link">Matériels en entrée</Link>
+                            <Link to="/recent" className="nav-link">Matériels en entrée</Link>
                         </li>
                         <li className="navbar-item">
                             <Link to="/reserver" className="nav-link">Réserver un matériel</Link>
@@ -31,6 +31,9 @@ export default class Navbar extends Component {
                         </li>
                         <li className="navbar-item">
                             <Link to="/search" className="nav-link">Rechercher un matériel</Link>
+                        </li>
+                        <li className="navbar-item">
+                            <Link to="/statistiques" className="nav-link">Statistiques</Link>
                         </li>
                     </ul>
                 </div>

@@ -2,7 +2,7 @@ import React, {useState, Component} from 'react';
 import LoginForm from "./LoginForm"
 import MaterielsList from "./materiels-list.component";
 
-function LoginMateriels() {
+function SignupMateriel() {
     const adminUser = {
         email: "rania@mail.com",
         password: "admin123"
@@ -46,5 +46,5 @@ function LoginMateriels() {
     );
 }
 
-export default LoginMateriels;
+export default SignupMateriel;
 

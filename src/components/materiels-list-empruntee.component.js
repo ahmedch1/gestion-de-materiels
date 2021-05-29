@@ -3,25 +3,21 @@ import {Link} from 'react-router-dom'
 import axios from 'axios';
 
 
-
-
-
-
-const Materiel=props=>(
+const Materiel = props => (
     <tr>
         <td>{props.materiel.nom}</td>
         <td>{props.materiel.reference}</td>
         <td>{props.materiel.stockdispo}</td>
         <td>{props.materiel.emprunteepar}</td>
-        <td>{props.materiel.derniereutilisation.substring(0,10)}</td>
-        <td>{props.materiel.prochaineutilisation.substring(0,10)}</td>
+        <td>{props.materiel.derniereutilisation.substring(0, 10)}</td>
+        <td>{props.materiel.prochaineutilisation.substring(0, 10)}</td>
         <td>
-            <Link to={"/edit/"+props.materiel._id}>edit</Link> | <a href="#" onClick={()=>{props.deleteMateriel(props.materiel._id)}}>delete</a>
+            <Link to={"/edit/" + props.materiel._id}>edit</Link> | <a href="#" onClick={() => {
+            props.deleteMateriel(props.materiel._id)
+        }}>delete</a>
         </td>
     </tr>
 )
-
-
 
 
 export default class MaterielsList extends Component {
@@ -51,38 +47,32 @@ export default class MaterielsList extends Component {
     }
 
 
-    materielList(){
+    materielList() {
 
-
-        return this.state.materiels.map(currentmateriel=>{
-            if(currentmateriel.emprunt===true) {
+        return this.state.materiels.map(currentmateriel => {
+            if (currentmateriel.emprunt === true) {
                 return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
                                  key={currentmateriel._id}/>;
             }
         })
 
     }
+
     render() {
-        // <td>{props.materiel.nom}</td>
-        // <td>{props.materiel.reference}</td>
-        // <td>{props.materiel.stockdispo}</td>
-        // <td>{props.materiel.emprunteepar}</td>
-        // <td>{props.materiel.derniereutilisation.substring(0,10)}</td>
-        // <td>{props.materiel.prochaineutilisation.substring(0,10)}</td>
         return (
             <div>
                 <h3>Liste de Materiels</h3>
                 <table className="table">
                     <thead className="thead-light">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Reference</th>
-                            <th>Quantité</th>
-                            <th>Empruntée par</th>
-                            <th>Date d'emprunt</th>
-                            <th>Date de retour</th>
-                            <th>Actions</th>
-                        </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Reference</th>
+                        <th>Quantité</th>
+                        <th>Empruntée par</th>
+                        <th>Date d'emprunt</th>
+                        <th>Date de retour</th>
+                        <th>Actions</th>
+                    </tr>
                     </thead>
                     <tbody>
                     {this.materielList()}

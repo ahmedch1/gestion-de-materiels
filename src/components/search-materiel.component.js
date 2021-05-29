@@ -4,7 +4,12 @@ import Search from './Search'
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import '../SearchApp.css'
+import {FaEdit, FaSearch} from "react-icons/fa";
 import Search2 from 'react-search'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import SearchField from 'react-search-field';
+import '@fortawesome/fontawesome-svg-core';
+
 
 const Materiel = props => (
     <tr>
@@ -82,33 +87,19 @@ export default class SearchMaterielComponent extends Component {
             { id: 4, value: 'Materiel5' }
         ]
         return (
-
             <div className="Search">
-                <div>
-                    <Search2 items={items} />
-
-                    <Search2 items={items}
-                            placeholder='Choisir Le materiel'
-                            maxSelected={3}
-                            multiple={true}
-                            onItemsChanged={this.HiItems.bind(this)} />
-                </div>
-
-                {/*<Search/>*/}
-                {/*/!*<div className="searchpart">*!/*/}
-                
-                
-                {/*    /!*    return this.state.materiels.map(currentmateriel=>{*!/*/}
-                {/*    /!*    return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}*!/*/}
-                {/*    /!*    key={currentmateriel._id}/>;*!/*/}
-                {/*    /!*})*!/*/}
-                {/*    {this.state.materiels.map((val, key) => {*/}
-                {/*        return <div className="user" key={key}><p>{val.nom}</p></div>*/}
-                {/*    })}*/}
-                {/*</div>*/}
 
                 <div>
-                    <h3>Liste de Materiels</h3>
+                    <h3>Rechercher un matériel</h3>
+                    <div className="wrapper">
+                        <div className="search-input">
+                            <a href="" target="_blank" hidden></a>
+                            <input type="text" placeholder="Chercher.."/>
+                                <div className="autocom-box">
+                                </div>
+                                <div className="icon"><i className="fas fa-search"/></div>
+                        </div>
+                    </div>
                     <table className="table">
                         <thead className="thead-light">
                         <tr>

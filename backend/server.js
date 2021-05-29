@@ -16,7 +16,7 @@ mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
 
 const connection = mongoose.connection;
 connection.once('open', () => {
-    console.log("MongoDB database connection established successfully");
+    console.log("la liaison a notre base de données Mongodb est réussi");
 });
 
 const materielsRouter=require('./routes/materiels');
@@ -24,5 +24,5 @@ const materielsRouter=require('./routes/materiels');
 app.use('/materiels',materielsRouter);
 
 app.listen(port, () => {
-    console.log(`Server is runniing on port: ${port}`);
+    console.log(`Server is running on port: ${port}`);
 });

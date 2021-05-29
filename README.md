@@ -1,9 +1,11 @@
+#singup / message confirmation delete / recherche / liste des matériels reservés
+
 #Start Frontend
 go to main folder gestion-de-materiels 
 and npm install then npm start
 
 #Start Backend 
-got to folder backend
+got to folder backend****
 and nodemon server.js / or node server.js
 #Ce qui manque
 Recherche materiel / statistiques / notifications
