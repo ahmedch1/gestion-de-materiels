@@ -19,5 +19,6 @@ launch npm start then npm run electron
 
 #affichage des materiels ajoutées en entree selon variable booleane (1er lieu  et selon date recente 2eme lieu)
 
-
+##Article electron react 
+https://dev.to/jsmanifest/create-your-first-react-desktop-application-in-electron-with-hot-reload-4jj5
 
