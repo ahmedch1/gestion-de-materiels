@@ -5,26 +5,26 @@ export default class Navbar extends Component {
     render() {
         return (
             <nav className="navbar navbar-dark bg-info navbar-expand-lg">
-                <Link to="/" className="navbar-brand">Gestion de Materiels</Link>
+                <Link to="/" className="navbar-brand">Gestion des matériels</Link>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav mr-auto">
+                        <li className="navbar-item">
+                            <Link to="/create" className="nav-link">Ajouter un matériel</Link>
+                        </li>
                         <li className="navbar-item">
                             <Link to="/materiels" className="nav-link">Liste des matériels</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/empruntee" className="nav-link">Matériels Empruntés</Link>
+                            <Link to="/empruntee" className="nav-link">Matériels empruntés</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/materiels" className="nav-link">Matérielsen Entrée</Link>
+                            <Link to="/materiels" className="nav-link">Matériels en entrée</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/create" className="nav-link">Ajouter un ateriel</Link>
+                            <Link to="/reserver" className="nav-link">Réserver un matériel</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to="/reserver" className="nav-link">Créer une réservation de Materiel</Link>
-                        </li>
-                        <li className="navbar-item">
-                            <Link to="/reservation" className="nav-link"> Réservations des Matériels</Link>
+                            <Link to="/reservation" className="nav-link">Matériels réservés</Link>
                         </li>
                     </ul>
                 </div>

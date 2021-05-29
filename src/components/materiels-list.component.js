@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {FaEdit} from "react-icons/fa";
+import {FaTrash} from "react-icons/fa";
 
-
-
-
-
-
+/* To add react icons I have installed npm install react-icons */
 const Materiel=props=>(
     <tr>
 
@@ -24,7 +23,7 @@ const Materiel=props=>(
         <td>{props.materiel.fournisseur}</td>
         <td>{props.materiel.codebarre}</td>
         <td>
-            <Link to={"/edit/"+props.materiel._id}>edit</Link> | <a href="#" onClick={()=>{props.deleteMateriel(props.materiel._id)}}>delete</a>
+            <Link to={"/edit/"+props.materiel._id}><FaEdit /></Link> | <a href="#" onClick={()=>{props.deleteMateriel(props.materiel._id)}}><FaTrash /></a>
         </td>
     </tr>
 )
