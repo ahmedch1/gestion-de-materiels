@@ -11,7 +11,8 @@ Recherche materiel / statistiques / notifications
 #For the database 
 create manuallly from mongodb compass database named 'gestion-de-materiels' and its collection same name 'gestion-de-materiels'
 
-
+#To Launch the Desktop app
+launch npm start then npm run electron
 
 #affichage des empruntes selon nouveau colonne 
 #feha emprunt ou non emprunt

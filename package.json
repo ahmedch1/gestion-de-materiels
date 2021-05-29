@@ -2,6 +2,14 @@
   "name": "gestion-de-materiels",
   "version": "0.1.0",
   "private": true,
+  "main": "src/start.js",
+  "homepage": "./",
+  "build": {
+    "appId": "gestionmateriels",
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/react-fontawesome": "^0.1.14",
@@ -10,6 +18,8 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "electron": "^13.0.1",
+    "electron-is-dev": "^2.0.0",
     "fuse.js": "^6.4.6",
     "react": "^17.0.2",
     "react-datepicker": "^3.8.0",
@@ -24,6 +34,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "electron": "electron .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,5 +57,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron-builder": "^22.10.5"
   }
 }
