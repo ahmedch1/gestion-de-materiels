@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {FaPlus} from "react-icons/all";
+
 
 export default class Navbar extends Component {
     render() {
@@ -9,7 +12,7 @@ export default class Navbar extends Component {
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="navbar-item">
-                            <Link to="/create" className="nav-link">Ajouter un matériel</Link>
+                            <Link to="/create" className="nav-link"><FaPlus/></Link>
                         </li>
                         <li className="navbar-item">
                             <Link to="/materiels" className="nav-link">Liste des matériels</Link>

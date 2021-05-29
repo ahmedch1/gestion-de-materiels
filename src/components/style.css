@@ -22,8 +22,56 @@ input.btn.btn-block{
     line-height: 23px;
     line-height: 1.6428571429rem;
 }
+
+button.btn.btn-block{
+    color: #fff;
+    background-color: #8cd2f3;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 13px 60px;
+    text-align: center;
+    border: none;
+    position: relative;
+    display: inline-block;
+    -webkit-box-shadow: 0 2px 4px 0 rgb(100 105 124 / 24%);
+    -moz-box-shadow: 0 2px 4px 0 rgba(100, 105, 124, 0.24);
+    box-shadow: 0 2px 4px 0 rgb(100 105 124 / 24%);
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    border-radius: 3px !important;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -ms-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+    line-height: 23px;
+    line-height: 1.6428571429rem;
+}
+
+.btn.btn-block {
+    color: #fff !important;
+    background-color: #8cd2f3;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 13px 60px;
+    text-align: center;
+    border: none;
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 2px 4px 0 rgb(100 105 124 / 24%);
+    border-radius: 3px !important;
+    transition: background-color 0.2s;
+    line-height: 23px;
+    line-height: 1.6428571429rem;
+}
+
 .col.right {
     background: url('https://dashboard.sleeknote.com/static/images/Login-Illustration-1.svg') no-repeat left bottom #E9EEFA;
     background-size: cover;
     min-height: 300px;
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl{
+    width: 100%;
+    max-width: 100%;
 }

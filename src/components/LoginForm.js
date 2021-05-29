@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './style.css'
+import {Link} from "react-router-dom";
 function LoginForm({Login, error}) {
     const [details, setDetails] = useState({name: "", email: "", password: ""});
 
@@ -13,7 +14,7 @@ function LoginForm({Login, error}) {
                 <div className="form-box">
                     <form onSubmit={submitHandler}>
                         <div className="form-inner">
-                            <h2>Login</h2>
+                            <h2>Connexion</h2>
                             {(error != "") ? (<div className="error">{error}</div>) : ""}
                             {/*<div className="form-group">*/}
                             {/*    <label htmlFor="name">Name:</label>*/}
@@ -21,20 +22,20 @@ function LoginForm({Login, error}) {
                             {/*           onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>*/}
                             {/*</div>*/}
                             <div className="form-group">
-                                <label htmlFor="email">Email:</label>
+                                <label htmlFor="email">Email</label>
                                 <input className="form-control" placeholder="Email" type="email" name="email" id="email"
                                        onChange={e => setDetails({...details, email: e.target.value})}
                                        value={details.email}/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
-                                <input className="form-control" placeholder="Password" type="password" name="password"
+                                <label htmlFor="password">Mot de passe</label>
+                                <input className="form-control" placeholder="Mot de passe" type="password" name="password"
                                        id="password"
                                        onChange={e => setDetails({...details, password: e.target.value})}
                                        value={details.password}/>
                             </div>
                             <input type="submit" value="Se Connecter" className="btn btn-block"/>
-
+                            <div className="btn btn-block"> <Link to="/inscription" className="nav-link">Inscription</Link></div>
                         </div>
                     </form>
                 </div>
