@@ -20,8 +20,10 @@ connection.once('open', () => {
 });
 
 const materielsRouter=require('./routes/materiels');
+const materielsReservesRouter=require('./routes/materielsreserves');
 
 app.use('/materiels',materielsRouter);
+app.use('/materielsreserves',materielsReservesRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

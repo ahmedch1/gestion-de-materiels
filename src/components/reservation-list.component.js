@@ -7,7 +7,7 @@ import {FaEdit} from "react-icons/fa";
 import {FaTrash} from "react-icons/fa";
 
 /* To add react icons I have installed npm install react-icons */
-const Materiel=props=>(
+const Materiel = props => (
     <tr>
 
         <td>{props.materiel.nom}</td>
@@ -15,33 +15,33 @@ const Materiel=props=>(
         <td>{props.materiel.reference}</td>
         <td>{props.materiel.stockdispo}</td>
         <td>{props.materiel.emprunteepar}</td>
-        <td>{props.materiel.derniereutilisation.substring(0,10)}</td>
-        <td>{props.materiel.prochaineutilisation.substring(0,10)}</td>
+        <td>{props.materiel.derniereutilisation.substring(0, 10)}</td>
+        <td>{props.materiel.prochaineutilisation.substring(0, 10)}</td>
         <td>{props.materiel.prix}</td>
         <td>{props.materiel.etat.toString()}</td>
         <td>{props.materiel.statut.toString()}</td>
         <td>{props.materiel.fournisseur}</td>
         <td>{props.materiel.codebarre}</td>
         <td>
-            <Link to={"/edit/"+props.materiel._id}><FaEdit /></Link> | <a href="#" onClick={()=>{props.deleteMateriel(props.materiel._id)}}><FaTrash /></a>
+            <Link to={"/edit/" + props.materiel._id}><FaEdit/></Link> | <a href="#" onClick={() => {
+            props.deleteMateriel(props.materiel._id)
+        }}><FaTrash/></a>
         </td>
     </tr>
 )
-
-
 
 
 export default class MaterielsList extends Component {
     constructor(props) {
         super(props);
         this.deleteMateriel = this.deleteMateriel.bind(this);
-        this.state = {materiels: []};
+        this.state = {materielsreserves: []};
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/materiels/')
+        axios.get('http://localhost:5000/materielsreserves/')
             .then(response => {
-                this.setState({materiels: response.data})
+                this.setState({materielsreserves: response.data})
             })
             .catch((error) => {
                 console.log(error);
@@ -49,24 +49,25 @@ export default class MaterielsList extends Component {
     }
 
     deleteMateriel(id) {
-        axios.delete('http://localhost:5000/materiels/' + id)
+        axios.delete('http://localhost:5000/materielsreserves/' + id)
             .then(res => console.log(res.data));
 
         this.setState({
-            materiels: this.state.materiels.filter(el => el._id !== id)
+            materielsreserves: this.state.materielsreserves.filter(el => el._id !== id)
         })
     }
 
 
-    materielList(){
+    materielList() {
 
 
-        return this.state.materiels.map(currentmateriel=>{
+        return this.state.materielsreserves.map(currentmateriel => {
             return <Materiel materiel={currentmateriel} deleteMateriel={this.deleteMateriel}
                              key={currentmateriel._id}/>;
         })
 
     }
+
     render() {
         return (
             <div>

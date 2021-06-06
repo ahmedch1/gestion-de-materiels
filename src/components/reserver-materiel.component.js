@@ -148,7 +148,7 @@ export default class ReserverMaterielComponent extends Component {
             prochaineutilisation: this.state.prochaineutilisation,
             prix: this.state.prix,
             etat: this.state.etat,
-            statut:false,
+            statut:this.state.statut,
             fournisseur:this.state.fournisseur,
             codebarre: this.state.codebarre,
             dateentree:this.state.dateentree,
@@ -157,16 +157,16 @@ export default class ReserverMaterielComponent extends Component {
         }
 
         console.log(materiel);
-        axios.post('http://localhost:5000/materiels/add',materiel)
+        axios.post('http://localhost:5000/materielsreserves/add',materiel)
             .then(res=>console.log(res.data));
 
-        window.location = '/empruntee';
+        window.location = '/reservation';
     }
 
     render() {
         return (
             <div>
-                <h3>Réserver un Materiel</h3>
+                <h3>Créer un Matériel</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Nom:</label>
@@ -174,30 +174,35 @@ export default class ReserverMaterielComponent extends Component {
                                onChange={this.onChangeNom}/>
                     </div>
                     <div className="form-group">
+                        <label>Famille:</label>
+                        <input type="text" required className="form-control" value={this.state.famille}
+                               onChange={this.onChangeFamille}/>
+                    </div>
+                    <div className="form-group">
                         <label>Reference:</label>
                         <input type="text" required className="form-control" value={this.state.reference}
                                onChange={this.onChangeReference}/>
                     </div>
                     <div className="form-group">
-                        <label>Quantité:</label>
+                        <label>StockDispo:</label>
                         <input type="text" required className="form-control" value={this.state.stockdispo}
                                onChange={this.onChangeStockdispo}/>
                     </div>
                     <div className="form-group">
-                        <label>Demandé par :</label>
+                        <label>Empruntée par :</label>
                         <input type="text" required className="form-control" value={this.state.emprunteepar}
                                onChange={this.onChangeEmprunteepar}/>
                     </div>
                     <div className="form-group">
                         <div>
-                            <label>Date de Demande :</label>
+                            <label>DerniereUtilisation:</label>
                             <DatePicker selected={this.state.derniereutilisation} onChange={this.onChangeDerniereutilisation}/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div>
-                            <label>Date de retour:</label>
+                            <label>ProchaineUtilisation:</label>
                             <DatePicker selected={this.state.prochaineutilisation} onChange={this.onChangeProchaineutilisation}/>
                         </div>
                     </div>
@@ -206,12 +211,40 @@ export default class ReserverMaterielComponent extends Component {
                         <input type="text" required className="form-control" value={this.state.prix}
                                onChange={this.onChangePrix}/>
                     </div>
+                    <div className="form-group">
+                        <label>Etat:</label>
+                        <input type="checkbox" className="form-control" value={this.state.etat}
+                               onChange={this.onChangeEtat}/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Statut:</label>
+                        <input type="checkbox" className="form-control" value={this.state.statut}
+                               onChange={this.onChangeStatut}/>
+                    </div>
+
+
+                    <div className="form-group">
+                        <label>Fournisseur :</label>
+                        <input type="text" required className="form-control" value={this.state.fournisseur}
+                               onChange={this.onChangeFournisseur}/>
+                    </div>
+
+
 
                     <div className="form-group">
                         <label>code à barre</label>
                         <input type="text" required className="form-control" value={this.state.Codebarre}
                                onChange={this.onChangeCodebarre}/>
                     </div>
+
+                    <div className="form-group">
+                        <div>
+                            <label>Date Entree :</label>
+                            <DatePicker selected={this.state.dateentree} onChange={this.onChangeDateentree}/>
+                        </div>
+                    </div>
+
 
                     {/*fournisseur*/}
                     {/*dateentree*/}
@@ -224,7 +257,7 @@ export default class ReserverMaterielComponent extends Component {
 
 
                     <div className="form-group">
-                        <input type="submit" value="Réserver Materiel" className="btn btn-primary"/>
+                        <input type="submit" value="Créer Réservation" className="btn btn-primary"/>
                     </div>
                 </form>
             </div>
