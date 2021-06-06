@@ -79,9 +79,9 @@ export default class MaterielsList extends Component {
                         <th>Famille</th>
                         <th>Reference</th>
                         <th>Quantité</th>
-                        <th>Emprunté actuellement par:</th>
-                        <th>Derniere Utilisation</th>
-                        <th>Prochaine Utilisation</th>
+                        <th>Demandé par:</th>
+                        <th>Date de Demande</th>
+                        <th>Date de retour</th>
                         <th>Prix</th>
                         <th>Etat</th>
                         <th>Statut</th>

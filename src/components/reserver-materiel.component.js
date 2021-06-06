@@ -166,7 +166,7 @@ export default class ReserverMaterielComponent extends Component {
     render() {
         return (
             <div>
-                <h3>Créer un Matériel</h3>
+                <h3>Réserver un Matériel</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Nom:</label>
@@ -189,20 +189,20 @@ export default class ReserverMaterielComponent extends Component {
                                onChange={this.onChangeStockdispo}/>
                     </div>
                     <div className="form-group">
-                        <label>Empruntée par :</label>
+                        <label>Demandé par:</label>
                         <input type="text" required className="form-control" value={this.state.emprunteepar}
                                onChange={this.onChangeEmprunteepar}/>
                     </div>
                     <div className="form-group">
                         <div>
-                            <label>DerniereUtilisation:</label>
+                            <label>Date de Demande:</label>
                             <DatePicker selected={this.state.derniereutilisation} onChange={this.onChangeDerniereutilisation}/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div>
-                            <label>ProchaineUtilisation:</label>
+                            <label>Date de Retour:</label>
                             <DatePicker selected={this.state.prochaineutilisation} onChange={this.onChangeProchaineutilisation}/>
                         </div>
                     </div>
