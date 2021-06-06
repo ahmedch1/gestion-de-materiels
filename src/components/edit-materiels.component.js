@@ -40,7 +40,7 @@ export default class EditMateriels extends Component {
             statut: false,
             fournisseur:'',
             dateentree:new Date(),
-            empruntee:'',
+            emprunteepar:'',
             codebarre:'',
             emprunt:false,
             recent:false
@@ -62,7 +62,7 @@ export default class EditMateriels extends Component {
                     statut: response.data.statut,
                     fournisseur:response.data.fournisseur,
                     dateentree:new Date(response.data.dateentree),
-                    empruntee:response.data.empruntee,
+                    emprunteepar:response.data.emprunteepar,
                     codebarre:response.data.codebarre,
                     emprunt:response.data.emprunt,
                     recent:response.data.recent
@@ -182,6 +182,7 @@ export default class EditMateriels extends Component {
             statut: this.state.statut,
             fournisseur:this.state.fournisseur,
             dateentree:this.state.dateentree,
+            emprunteepar:this.state.emprunteepar,
             emprunt: this.state.emprunt,
             recent:this.state.recent
         }
@@ -207,6 +208,11 @@ export default class EditMateriels extends Component {
                         <label>Famille:</label>
                         <input type="text" required className="form-control" value={this.state.famille}
                                onChange={this.onChangeFamille}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Empruntee par:</label>
+                        <input type="text" required className="form-control" value={this.state.emprunteepar}
+                               onChange={this.onChangeEmprunteepar}/>
                     </div>
                     <div className="form-group">
                         <label>Référence:</label>
