@@ -4,7 +4,8 @@ import "react-datepicker/dist/react-datepicker.css"
 import axios from 'axios';
 
 
-export default class ReserverMaterielComponent extends Component {
+
+export default class EditMaterielsReserve extends Component {
     constructor(props) {
         super(props);
 
@@ -14,15 +15,12 @@ export default class ReserverMaterielComponent extends Component {
         this.onChangeStockdispo = this.onChangeStockdispo.bind(this);
         this.onChangeDerniereutilisation = this.onChangeDerniereutilisation.bind(this);
         this.onChangeProchaineutilisation = this.onChangeProchaineutilisation.bind(this);
-        this.onChangePrix = this.onChangePrix.bind(this);
-        this.onChangeEtat = this.onChangeEtat.bind(this);
-        this.onChangeStatut = this.onChangeStatut.bind(this);
-        this.onChangeFournisseur=this.onChangeFournisseur.bind(this);
-        this.onChangeDateentree=this.onChangeDateentree.bind(this);
-        this.onChangeEmprunteepar=this.onChangeEmprunteepar.bind(this);
-        this.onChangeCodebarre=this.onChangeCodebarre.bind(this);
+        this.onChangeDateentree = this.onChangeDateentree.bind(this);
+        this.onChangeEmprunteepar = this.onChangeEmprunteepar.bind(this);
+        this.onChangeCodeBarre = this.onChangeCodeBarre.bind(this);
         this.onChangeEmprunt=this.onChangeEmprunt.bind(this);
         this.onChangeRecent=this.onChangeRecent.bind(this);
+
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -33,19 +31,32 @@ export default class ReserverMaterielComponent extends Component {
             stockdispo: 0,
             derniereutilisation: new Date(),
             prochaineutilisation: new Date(),
-            prix: 0,
-            etat: false,
-            statut:false,
-            fournisseur:'',
-            dateentree: new Date(),
+            dateentree:new Date(),
             emprunteepar:'',
             codebarre:'',
             emprunt:false,
             recent:false
-
         }
     }
 
+    componentDidMount() {
+        axios.get('http://localhost:5000/materielsreserves/' + this.props.match.params.id)
+            .then(response => {
+                this.setState({
+                    nom: response.data.nom,
+                    famille: response.data.famille,
+                    reference: response.data.reference,
+                    stockdispo: response.data.stockdispo,
+                    derniereutilisation: new Date(response.data.derniereutilisation),
+                    prochaineutilisation: new Date(response.data.prochaineutilisation),
+                    dateentree:new Date(response.data.dateentree),
+                    emprunteepar:response.data.emprunteepar,
+                    codebarre:response.data.codebarre,
+                    emprunt:response.data.emprunt,
+                    recent:response.data.recent
+                })
+            })
+    }
 
 
     onChangeNom(e) {
@@ -71,16 +82,17 @@ export default class ReserverMaterielComponent extends Component {
             stockdispo: e.target.value
         });
     }
-    onChangeEmprunteepar(e){
-        this.setState({
-            emprunteepar: e.target.value
-        });
-    }
 
     onChangeDerniereutilisation(derniereutilisation) {
         this.setState({
             derniereutilisation: derniereutilisation
         });
+    }
+
+    onChangeDateentree(dateentree){
+        this.setState({
+            dateentree:dateentree
+        })
     }
 
     onChangeProchaineutilisation(prochaineutilisation) {
@@ -89,39 +101,21 @@ export default class ReserverMaterielComponent extends Component {
         });
     }
 
-    onChangePrix(e) {
-        this.setState({
-            prix: e.target.value
-        });
-    }
 
-    onChangeEtat(e) {
+
+
+    onChangeEmprunteepar(e) {
         this.setState({
-            etat: e.target.checked
-        });
-    }
-    onChangeStatut(e) {
-        this.setState({
-            statut: e.target.checked
-        });
-    }
-    onChangeFournisseur(e){
-        this.setState({
-            fournisseur: e.target.value
-        });
-    }
-    onChangeCodebarre(e){
-        this.setState({
-            codebarre:e.target.value
-        })
-    }
-    onChangeDateentree(dateentree){
-        this.setState({
-            dateentree: dateentree
+            emprunteepar: e.target.value
         });
     }
 
 
+    onChangeCodeBarre(e) {
+        this.setState({
+            codebarre: e.target.value
+        });
+    }
 
     onChangeEmprunt(e){
         this.setState({
@@ -136,6 +130,8 @@ export default class ReserverMaterielComponent extends Component {
     }
 
 
+
+
     onSubmit(e) {
         e.preventDefault();
         const materiel = {
@@ -143,22 +139,17 @@ export default class ReserverMaterielComponent extends Component {
             famille: this.state.famille,
             reference: this.state.reference,
             stockdispo: this.state.stockdispo,
-            emprunteepar:this.state.emprunteepar,
             derniereutilisation: this.state.derniereutilisation,
             prochaineutilisation: this.state.prochaineutilisation,
-            prix: this.state.prix,
-            etat: this.state.etat,
-            statut:this.state.statut,
-            fournisseur:this.state.fournisseur,
-            codebarre: this.state.codebarre,
             dateentree:this.state.dateentree,
-
-
+            emprunteepar:this.state.emprunteepar,
+            emprunt: this.state.emprunt,
+            recent:this.state.recent
         }
 
         console.log(materiel);
-        axios.post('http://localhost:5000/materielsreserves/add',materiel)
-            .then(res=>console.log(res.data));
+        axios.post('http://localhost:5000/materielsreserves/update/' + this.props.match.params.id, materiel)
+            .then(res => console.log(res.data));
 
         window.location = '/reservation';
     }
@@ -166,7 +157,7 @@ export default class ReserverMaterielComponent extends Component {
     render() {
         return (
             <div>
-                <h3>Réserver un Matériel</h3>
+                <h3>Modifier matériel</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Nom:</label>
@@ -179,62 +170,48 @@ export default class ReserverMaterielComponent extends Component {
                                onChange={this.onChangeFamille}/>
                     </div>
                     <div className="form-group">
-                        <label>Reference:</label>
-                        <input type="text" required className="form-control" value={this.state.reference}
-                               onChange={this.onChangeReference}/>
-                    </div>
-                    <div className="form-group">
-                        <label>StockDispo:</label>
-                        <input type="text" required className="form-control" value={this.state.stockdispo}
-                               onChange={this.onChangeStockdispo}/>
-                    </div>
-                    <div className="form-group">
-                        <label>Demandé par:</label>
+                        <label>Empruntee par:</label>
                         <input type="text" required className="form-control" value={this.state.emprunteepar}
                                onChange={this.onChangeEmprunteepar}/>
                     </div>
                     <div className="form-group">
+                        <label>Référence:</label>
+                        <input type="text" required className="form-control" value={this.state.reference}
+                               onChange={this.onChangeReference}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Stock Disponible:</label>
+                        <input type="text" required className="form-control" value={this.state.stockdispo}
+                               onChange={this.onChangeStockdispo}/>
+                    </div>
+
+                    <div className="form-group">
                         <div>
-                            <label>Date de Demande:</label>
-                            <DatePicker selected={this.state.derniereutilisation} onChange={this.onChangeDerniereutilisation}/>
+                            <label>Derniere utilisation:</label>
+                            <DatePicker selected={this.state.derniereutilisation}
+                                        onChange={this.onChangeDerniereutilisation}/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div>
-                            <label>Date de Retour:</label>
-                            <DatePicker selected={this.state.prochaineutilisation} onChange={this.onChangeProchaineutilisation}/>
+                            <label>Prochaine utilisation:</label>
+                            <DatePicker selected={this.state.prochaineutilisation}
+                                        onChange={this.onChangeProchaineutilisation}/>
                         </div>
                     </div>
-
-
-
                     <div className="form-group">
-                        <label>code à barre</label>
-                        <input type="text" required className="form-control" value={this.state.Codebarre}
-                               onChange={this.onChangeCodebarre}/>
+                        <label>Emprunté </label>
+                        <input type="checkbox" className="form-control" value={this.state.emprunt}
+                               onChange={this.onChangeEmprunt}/>
                     </div>
-
                     <div className="form-group">
-                        <div>
-                            <label>Date Entree :</label>
-                            <DatePicker selected={this.state.dateentree} onChange={this.onChangeDateentree}/>
-                        </div>
+                        <label>Récent </label>
+                        <input type="checkbox" className="form-control" value={this.state.recent}
+                               onChange={this.onChangeRecent}/>
                     </div>
-
-
-                    {/*fournisseur*/}
-                    {/*dateentree*/}
-                    {/*emprunteepar*/}
-                    {/*codebarre*/}
-
-
-
-
-
-
                     <div className="form-group">
-                        <input type="submit" value="Créer Réservation" className="btn btn-primary"/>
+                        <input type="submit" value="Edit Materiel" className="btn btn-primary"/>
                     </div>
                 </form>
             </div>

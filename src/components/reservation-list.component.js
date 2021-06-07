@@ -17,10 +17,6 @@ const Materiel = props => (
         <td>{props.materiel.emprunteepar}</td>
         <td>{props.materiel.derniereutilisation.substring(0, 10)}</td>
         <td>{props.materiel.prochaineutilisation.substring(0, 10)}</td>
-        <td>{props.materiel.prix}</td>
-        <td>{props.materiel.etat.toString()}</td>
-        <td>{props.materiel.statut.toString()}</td>
-        <td>{props.materiel.fournisseur}</td>
         <td>{props.materiel.codebarre}</td>
         <td>
             <Link to={"/edit/" + props.materiel._id}><FaEdit/></Link> | <a href="#" onClick={() => {
@@ -82,12 +78,7 @@ export default class MaterielsList extends Component {
                         <th>Demandé par:</th>
                         <th>Date de Demande</th>
                         <th>Date de retour</th>
-                        <th>Prix</th>
-                        <th>Etat</th>
-                        <th>Statut</th>
-                        <th>Fournisseur</th>
                         <th>Code à barre</th>
-
                         <th>Actions</th>
                     </tr>
                     </thead>
