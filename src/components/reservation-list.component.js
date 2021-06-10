@@ -67,7 +67,7 @@ export default class MaterielsList extends Component {
     render() {
         return (
             <div>
-                <h3>Liste de Materiels</h3>
+                <h3>Liste de Réservations</h3>
                 <table className="table">
                     <thead className="thead-light">
                     <tr>
