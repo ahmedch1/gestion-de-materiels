@@ -2,7 +2,9 @@ import React, {useState, Component} from 'react';
 import LoginForm from "./LoginForm"
 import MaterielsList from "./materiels-list.component";
 
+
 function LoginMateriels() {
+
     const adminUser = {
         email: "rania@mail.com",
         password: "admin123"
@@ -15,7 +17,7 @@ function LoginMateriels() {
     const Login = details => {
         console.log(details);
 
-        if (details.email == adminUser.email && details.password == adminUser.password) {
+        if (details.email === adminUser.email && details.password === adminUser.password) {
             console.log("logged in");
             setUser({
                 name:details.name,
@@ -31,6 +33,7 @@ function LoginMateriels() {
         console.log("Logout");
         setUser({name: "",email: ""});
     }
+
     return (
 
         <div className="App">
