@@ -1,12 +1,13 @@
 import React, {useState} from "react";
+import axios from 'axios';
 import './style.css'
 import {Link} from "react-router-dom";
 function LoginForm({Login, error}) {
-    const [details, setDetails] = useState({name: "", email: "", password: ""});
+    const [details, setDetails] = useState({ email: "", password: ""});
 
     const submitHandler = e => {
         e.preventDefault();
-        Login(details);
+     axios.post('http://localhost:5000/login/login', details);
     }
     return (
         <div className="container-fluid row">
@@ -15,7 +16,7 @@ function LoginForm({Login, error}) {
                     <form onSubmit={submitHandler}>
                         <div className="form-inner">
                             <h2>Connexion</h2>
-                            {(error != "") ? (<div className="error">{error}</div>) : ""}
+                            {(error !=="") ? (<div className="error">{error}</div>) : ""}
                             {/*<div className="form-group">*/}
                             {/*    <label htmlFor="name">Name:</label>*/}
                             {/*    <input type="text" name="name" id="name"*/}

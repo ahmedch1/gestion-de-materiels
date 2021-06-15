@@ -1,21 +1,24 @@
 import React, {useState} from "react";
+import axios from "axios";
 import './style.css'
 import {Link} from "react-router-dom";
-function SignupForm({Login, error}) {
-    const [details, setDetails] = useState({name: "", email: "", password: ""});
+function SignupForm({ error}) {
+    const [details, setDetails] = useState({ email: "", password: ""});
 
     const submitHandler = e => {
         e.preventDefault();
-        Login(details);
+        console.log(details);
+        axios.post('http://localhost:5000/signup/signup', details)
     }
+    
     return (
         <div className="container-fluid row">
             <div className="col-sm-6">
                 <div className="form-box">
                     <form onSubmit={submitHandler}>
                         <div className="form-inner">
-                            <h2>Créer un compte</h2>
-                            {(error != "") ? (<div className="error">{error}</div>) : ""}
+                            <h2>Créer un compte ani lehna!!!!!</h2>
+                            {(error !== "") ? (<div className="error">{error}</div>) : ""}
                             {/*<div className="form-group">*/}
                             {/*    <label htmlFor="name">Name:</label>*/}
                             {/*    <input type="text" name="name" id="name"*/}
@@ -34,23 +37,21 @@ function SignupForm({Login, error}) {
                                        onChange={e => setDetails({...details, password: e.target.value})}
                                        value={details.password}/>
                             </div>
-                            <div className="btn btn-block"> <Link to="/inscription" className="nav-link">S'inscrire</Link></div>
+                            <input type="submit" value="S'inscrire" className="btn btn-block"/>
                         </div>
-
-
                     </form>
                 </div>
                 Vous avez un compte?
                 <div className="">
-                <input type="submit" value="Se Connecter" className="btn btn-block"/>
                 </div>
                 </div>
             <div className="col-sm-6 col right">
-
+            <div className="btn btn-block"> <Link to="/inscription" className="nav-link">S'inscrire</Link></div>
             </div>
 
         </div>
     )
 }
+
 
 export default SignupForm;
